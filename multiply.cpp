@@ -1,16 +1,19 @@
 #include<iostream>
 #include <emscripten.h>
-	using namespace std;
+extern "C"{
+	int multiply_in_js(float,float);
+}
 extern "C"{
 	 EMSCRIPTEN_KEEPALIVE
 	int multiply(float x,float y)
 	{
-		return x*y;
+		return multiply_in_js(x,y);
 	
 	}
 }
 	int main()
 	{
-		cout << "initialized";
+	
 		return 0;
 	}
+	
